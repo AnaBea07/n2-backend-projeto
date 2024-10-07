@@ -1,6 +1,5 @@
 package com.AnaBeatriz.TrabalhoBackend.estadosBrasileiros;
 
-//Responsável por mostrar a latitude e longitude dos estados brasileiros.
 
 import java.util.HashMap;
 import java.util.Map;

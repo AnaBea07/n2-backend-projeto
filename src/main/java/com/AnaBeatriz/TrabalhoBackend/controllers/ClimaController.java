@@ -1,12 +1,13 @@
 package com.AnaBeatriz.TrabalhoBackend.controllers;
 
 
-import com.AnaBeatriz.TrabalhoBackend.estadosBrasileiros.EstadosBrasileiros;
 import com.AnaBeatriz.TrabalhoBackend.services.ClimaService;
+import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestClient;
+
 
 import java.time.LocalDate;
 import java.util.HashMap;
@@ -28,21 +29,26 @@ public class ClimaController {
     @GetMapping("/previsao")
     public ResponseEntity<String> getPrevisao(
             @RequestParam String estado,
-            @RequestParam LocalDate dataInicio,
-            @RequestParam LocalDate dataFinal) {
+            @RequestParam LocalDate data) {
 
-        String previsao = climaService.getPrevisao(estado, dataInicio, dataFinal);
+        String previsao = climaService.getPrevisao(estado, data);
         return ResponseEntity.ok(previsao);
     }
-        @PostMapping("/previsao")
-        public ResponseEntity<String> postPrevisao(@RequestBody PrevisaoRequest previsaoRequest) {
-            String previsao = climaService.getPrevisao(
+
+    @PostMapping("/relatorio")
+    public ResponseEntity<String> gerarRelatorio(@RequestBody PrevisaoRequest previsaoRequest) {
+        try {
+            String relatorio = climaService.gerarRelatorio(
                     previsaoRequest.getEstado(),
-                    previsaoRequest.getDataInicio(),
-                    previsaoRequest.getDataFinal()
+                    previsaoRequest.getData()
             );
-            return ResponseEntity.ok(previsao);
+            return ResponseEntity.ok(relatorio);
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body("Erro: " + e.getMessage());
+        } catch (JSONException e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro ao processar o JSON: " + e.getMessage());
         }
+    }
 
     @GetMapping("/sobre")
     public ResponseEntity<Map<String, String>> sobre() {

@@ -5,8 +5,7 @@ import java.time.LocalDate;
 public class PrevisaoRequest {
 
     private String estado;
-    private LocalDate dataInicio;
-    private LocalDate dataFinal;
+    private LocalDate data;
 
 
     public String getEstado() {
@@ -17,19 +16,12 @@ public class PrevisaoRequest {
         this.estado = estado;
     }
 
-    public LocalDate getDataInicio() {
-        return dataInicio;
+    public LocalDate getData() {
+        return data;
     }
 
-    public void setDataInicio(LocalDate dataInicio) {
-        this.dataInicio = dataInicio;
-    }
-
-    public LocalDate getDataFinal() {
-        return dataFinal;
-    }
-
-    public void setDataFinal(LocalDate dataFinal) {
-        this.dataFinal = dataFinal;
+    public void setData(LocalDate data) {
+        this.data = data;
     }
 }
+

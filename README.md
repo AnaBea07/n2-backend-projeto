@@ -1,6 +1,6 @@
 # n2-backend-projeto
 
-Este projeto é um serviço de meteorologia que utiliza a API [Open Meteo](https://open-meteo.com/) para obter previsões climáticas com base no estado e data fornecidos pelo usuário. Ele converte os dados de previsão, como temperatura, precipitação e horários de nascer/pôr do sol, em mensagens compreensíveis e também pode gerar um relatório (para mais informações). <br>
+Este projeto é um serviço de meteorologia que utiliza a API [Open Meteo](https://open-meteo.com/) para obter previsões climáticas com base no estado e data fornecidos pelo usuário. Ele converte os dados de previsão, como temperatura, precipitação e horários de nascer/pôr do sol, em mensagens e também pode gerar um relatório (para mais informações). <br>
 
 # Tecnologias utilizadas <br>
 - Java <br>
